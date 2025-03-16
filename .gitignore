@@ -1,0 +1,5 @@
+.idea
+*.sqlite3
+venv
+*.pyc
+IoT_Esp32/__pycache__/
