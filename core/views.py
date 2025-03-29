@@ -13,5 +13,6 @@ class EstadoCreateView(CreateView):
     form_class = CreateEstadoForm
 
 
+
 class IndexView(TemplateView):
     template_name = 'index.html'
