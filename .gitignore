@@ -3,4 +3,4 @@
 venv
 *.pyc
 IoT_Esp32/__pycache__/
-IotEsp32_2.pem
+*.pem
