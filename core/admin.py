@@ -1,13 +1,11 @@
 from django.contrib import admin
 from django.db import models
-from core.models import EstadoBotao, TesteRest
+from core.models import EstadoBotao, ProducaoMachine1
 # Register your models here.
-class EstadoBotaoAdmin(admin.ModelAdmin):
+
+
+class Machine1Admin(admin.ModelAdmin):
     pass
 
-class TemperaturasAdmin(admin.ModelAdmin):
-    pass
 
-
-admin.site.register(EstadoBotao, EstadoBotaoAdmin)
-admin.site.register(TesteRest, TemperaturasAdmin)
+admin.site.register(ProducaoMachine1, Machine1Admin)

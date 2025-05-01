@@ -10,7 +10,14 @@ class EstadoBotao(models.Model):
         return reverse('index')
 
 
-class TesteRest(models.Model):
-    criado = models.DateTimeField(auto_now_add=True)
-    modificado = models.DateTimeField(auto_now=True)
-    temperatura = models.IntegerField(blank=False,verbose_name="Tempêratura")
+class ProducaoMachine1(models.Model):
+    dia = models.DateField(auto_now_add=True)
+    dia_e_hora = models.DateTimeField(auto_now_add=True)
+    temperatura = models.IntegerField(blank=False,verbose_name="Temperatura")
+
+    def __str__(self):
+        return self.dia_e_hora.strftime('%d/%m/%Y %H:%M:%S')
+
+    class Meta:
+        verbose_name = "Dados Produção Machine 1"
+        verbose_name_plural = "Produção Machine 1"

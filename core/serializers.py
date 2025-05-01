@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import TesteRest
+from .models import ProducaoMachine1
 
 
-class TesteRestSerializer(serializers.ModelSerializer):
+class ProducaoMachine1Serializer(serializers.ModelSerializer):
     class Meta:
-        model = TesteRest
+        model = ProducaoMachine1
         fields = [
             'id',
             'criado',
