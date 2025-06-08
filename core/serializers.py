@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ProducaoMachine1, SetupMachine1
+from .models import ProducaoMachine1, SetupMachine1, MonitoramentoDunexa
 
 
 class ProducaoMachine1Serializer(serializers.ModelSerializer):
@@ -24,3 +24,16 @@ class SetupMachine1Serializer(serializers.ModelSerializer):
             'tempo_setup_ld',
             'criado'
         ]
+
+
+class MonitoramentoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SetupMachine1
+        fields = [
+            'id',
+            'pessoas',
+            'carros',
+            'criado'
+        ]
+
+

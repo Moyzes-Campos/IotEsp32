@@ -3,11 +3,11 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
-from .models import EstadoBotao, ProducaoMachine1, SetupMachine1
+from .models import EstadoBotao, ProducaoMachine1, SetupMachine1, MonitoramentoDunexa
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import ProducaoMachine1Serializer, SetupMachine1Serializer
+from .serializers import ProducaoMachine1Serializer, SetupMachine1Serializer, MonitoramentoSerializer
 from django.db.models import Count, Avg
 
 # Create your views here.
@@ -59,3 +59,26 @@ class SetupMachine1View(APIView):
 
         serializer = SetupMachine1Serializer(ultimo)
         return Response(serializer.data)
+
+
+class MonitoramentoView(APIView):
+    def get(self, request):
+        monitoramento = MonitoramentoDunexa.objects.all()
+        serializer = MonitoramentoSerializer(monitoramento, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = MonitoramentoSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    
+class MonitoramentoIndexView(TemplateView):
+    template_name = 'monitoramento_index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(MonitoramentoIndexView,self).get_context_data(**kwargs)
+        context['monitoramento'] = MonitoramentoDunexa.objects.all()
+        return context
+

@@ -37,3 +37,17 @@ class SetupMachine1(models.Model):
         verbose_name = "Setup Machine 1"
         verbose_name_plural = "Setup Machine 1"
         ordering = ['-criado']
+
+
+class MonitoramentoDunexa(models.Model):
+    criado = models.DateTimeField(auto_now_add=True)
+    pessoas = models.IntegerField(blank=False)
+    carros = models.IntegerField(blank=False)
+
+    def __str__(self):
+        return self.criado.strftime('%d/%m/%Y %H:%M:%S')
+
+    class Meta:
+        verbose_name = "Dados de Monitoramento"
+        verbose_name_plural = "Dados de Monitoramento"
+        ordering = ['-criado']
