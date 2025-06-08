@@ -50,4 +50,4 @@ class MonitoramentoDunexa(models.Model):
     class Meta:
         verbose_name = "Dados de Monitoramento"
         verbose_name_plural = "Dados de Monitoramento"
-        ordering = ['-criado']
+        ordering = ['criado']
